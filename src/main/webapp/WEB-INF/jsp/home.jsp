@@ -18,59 +18,18 @@
 
     <title>Diabetyk Portal</title>
 
-    <!-- Bootstrap core CSS --> 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-<!--    <link href="jumbotron.css" rel="stylesheet">-->
-
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <%@include file="../template/bootstrap.jsp" %>
   </head>
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Diabetyk</a>
-        </div>
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">O projekcie</a></li>
-            <li><a href="#contact">Kontakt</a></li>
-          </ul>
-        <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Hasło" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Zaloguj</button>
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </div>
+      <%@include file="../template/menu.jsp" %>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Portal dla Diabetyków</h1>
-        <p>Pomóż stworzyć największą, darmową bazę informacji o ilości wymienników w produkach spożywczych. </p>
+        <h1>Diabetyk</h1>
+        <p>Pomóż stworzyć największą, darmową bazę informacji o ilości wymienników węglowodanowych i białkowo-tłuszczowych w produkach spożywczych. </p>
         <p><a class="btn btn-primary btn-lg" role="button">Dołącz do nas &raquo;</a></p>
       </div>
     </div>
@@ -97,17 +56,11 @@
 
       <hr>
 
-      <footer>
-        <p>&copy; SoftProject 2014</p>
-      </footer>
+      <%@include file="../template/footer.jsp" %>
     </div> <!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <%@include file="../template/bootstrap-footer.jsp" %>
   </body>
 </html>
 

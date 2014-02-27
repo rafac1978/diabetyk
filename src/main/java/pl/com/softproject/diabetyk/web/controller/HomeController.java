@@ -13,11 +13,11 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Adrian Lapierre <adrian@softproject.com.pl>
  */
 @Controller
-public class MyController {
+public class HomeController {
     
     protected Logger logger = Logger.getLogger(getClass());
     
-    @RequestMapping("/home.htm")
+    @RequestMapping("/home")
     public ModelAndView home() {
         
         logger.debug("MyController.home()");
