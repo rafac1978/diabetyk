@@ -6,6 +6,7 @@
 
 package pl.com.softproject.diabetyk.web.model;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -38,8 +39,8 @@ public class ProductCategory {
     @JoinColumn(name="category_id")
     private ProductCategory parent;
     
-    @ManyToMany
-    private Set<Product> products;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Product> products = new HashSet<Product>(0);
 
     public Long getId() {
         return id;
@@ -57,9 +58,49 @@ public class ProductCategory {
         this.name = name;
     }
 
+    public ProductCategory getParent() {
+        return parent;
+    }
+
+    public void setParent(ProductCategory parent) {
+        this.parent = parent;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
+
     @Override
     public String toString() {
         return "ProductCategory{" + "id=" + id + ", name=" + name + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 19 * hash + (this.id != null ? this.id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ProductCategory other = (ProductCategory) obj;
+        if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     
 }

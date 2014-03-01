@@ -6,7 +6,9 @@
 
 package pl.com.softproject.diabetyk.web.model;
 
+import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,8 +47,8 @@ public class Product {
     @DecimalMin("0")
     private Integer wwInPortion;
     
-    @ManyToMany(mappedBy="products")
-    private Set<ProductCategory> categories;
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
+    private Set<ProductCategory> categories = new HashSet<ProductCategory>(0);
 
     public Long getId() {
         return id;
@@ -128,6 +130,29 @@ public class Product {
         this.wwInPortion = wwInPortion;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + (this.id != null ? this.id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Product other = (Product) obj;
+        if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    
     
     @Override
     public String toString() {

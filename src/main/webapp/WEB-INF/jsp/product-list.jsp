@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="i/Diabetes_icon.png">
+    <link rel="shortcut icon" href="resources/i/Diabetes_icon.png">
 
     <title>Diabetyk Portal :: lista produktów</title>
 
