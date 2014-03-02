@@ -8,6 +8,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page import="java.lang.String" %>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <% 
     String url = (String) request.getAttribute("javax.servlet.forward.request_uri");
@@ -31,20 +32,34 @@
         <ul class="nav navbar-nav">
 <!--            <li class="active"><a href="home.htm">Home</a></li>-->
             <li <c:if test="${menu == 'list.htm'}">class="active"</c:if>><a href="list">Produkty</a></li>
-            <li <c:if test="${menu == 'product/add.htm'}">class="active"</c:if>><a href="product/add">Dodaj produkt</a></li>
+            <sec:authorize ifAnyGranted="ROLE_MODERATOR,ROLE_ADMIN">
+                <li <c:if test="${menu == 'product/add.htm'}">class="active"</c:if>><a href="product/add">Dodaj produkt</a></li>
+            </sec:authorize>
             <li><a href="#about">O projekcie</a></li>
             <li><a href="#contact">Kontakt</a></li>
         </ul>
         <div class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right" role="form">
+        
+        <sec:authorize access="isAnonymous()">
+            
+            <form class="navbar-form navbar-right" role="form" action='/diabetyk-web/j_spring_security_check' method='POST'>
                 <div class="form-group">
-                    <input type="text" placeholder="Email" class="form-control">
+                    <input type="text" placeholder="Email" class="form-control" name='j_username'>
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Hasło" class="form-control">
+                    <input type="password" placeholder="Hasło" class="form-control" name='j_password'>
                 </div>
                 <button type="submit" class="btn btn-success">Zaloguj</button>
             </form>
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+            <div class="container">
+                <ul class="navbar-right">
+                    <li><a href="<c:url value="/logout" />">Logout</a></li>
+                </ul>
+            </div>
+        </sec:authorize>
+            
         </div><!--/.navbar-collapse -->
     </div>
 </div>
