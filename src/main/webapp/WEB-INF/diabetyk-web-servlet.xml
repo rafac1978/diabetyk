@@ -15,6 +15,7 @@
     <mvc:annotation-driven />
     <mvc:resources mapping="/resources/**" location="/resources/" />
     <mvc:view-controller path="/" view-name="home"/>
+    <mvc:view-controller path="/login" view-name="login_new"/>
     
     <context:property-placeholder location="classpath:system.properties"/>
     

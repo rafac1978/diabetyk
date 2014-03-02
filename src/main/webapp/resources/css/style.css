@@ -1,0 +1,69 @@
+.content {
+    width: 900px;
+    margin: 50px auto;
+}
+
+.resulttable {
+    margin: 40px 0 30px;
+}
+
+.resulttable tbody tr {
+    cursor: pointer;
+}
+
+.resulttable a, .resulttable a:link, .resulttable a:visited, .resulttable a:hover {
+    color: #333333;
+    text-decoration: none;
+}
+
+.validationError {
+    color : red;
+    margin: 60px auto 10px;
+    text-align: center;
+}
+
+.variant-table {
+    margin: 70px auto;
+}
+
+.variant-table input {
+    border : none !important;
+    box-shadow: none !important;
+    padding: 0 0;
+}
+
+.wordinfo {
+    margin: 40px auto;
+}
+
+.wordinfo tbody {
+    border : 1px solid #dddddd;
+}
+
+.wordinfo td  {
+    border : 1px solid #dddddd;
+    text-align: center;
+    padding: 1px 8px;
+    cursor: default;
+}
+
+.wordinfo input {
+    border : none !important;
+    box-shadow: none !important;
+    text-align: center;
+    padding: 0 0;
+    width: 110px;
+}
+
+td.col {
+    color: #0066cc;
+}
+
+.off {
+    display: none;
+}
+
+.controlBtn {
+    float: right;
+    height: 26px;
+}

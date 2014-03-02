@@ -16,7 +16,7 @@
 		
     <security:http>
         <security:intercept-url pattern="/product/**" access="ROLE_USER" />        
-        <security:form-login default-target-url="/" />
+        <security:form-login default-target-url="/" login-page="/login" authentication-failure-url="/login?error=true"/>
         <security:anonymous />
 <!--        <security:http-basic />-->
         <security:logout logout-url="/logout"/>
