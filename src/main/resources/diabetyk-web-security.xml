@@ -15,7 +15,7 @@
            ">
 		
     <security:http>
-        <security:intercept-url pattern="/product/**" access="ROLE_USER,ROLE_ADMIN,ROLE_MODERATOR" />        
+        <security:intercept-url pattern="/product/**" access="ROLE_USER" />        
         <security:form-login default-target-url="/" />
         <security:anonymous />
 <!--        <security:http-basic />-->
