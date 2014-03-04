@@ -8,6 +8,7 @@ package pl.com.softproject.diabetyk.web.services;
 
 import org.springframework.transaction.annotation.Transactional;
 import pl.com.softproject.diabetyk.web.model.Product;
+import pl.com.softproject.diabetyk.web.model.ProductCategory;
 
 /**
  *
@@ -17,5 +18,9 @@ public interface ProductService {
 
     
     void saveProduct(Product product);
+
+    Iterable<ProductCategory> findAllCategories();
+
+    Iterable<ProductCategory> findAllCategoriesOrdered();
     
 }

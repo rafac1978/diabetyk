@@ -120,7 +120,8 @@
                         
                     </table>
                     <button type="submit" class="btn btn-success">Zapisz</button>
-                    <button type="button" class="btn btn-danger" onclick="window.location.href='${pageContext.request.contextPath}/list.htm'">Anuluj</button>
+                    <button type="button" class="btn btn-danger" onclick="window.location.href='<c:url value="/list"/>'">Anuluj</button>
+                    
                 </form:form>
                 
             </div>

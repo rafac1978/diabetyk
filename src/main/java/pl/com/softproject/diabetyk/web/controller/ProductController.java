@@ -25,7 +25,9 @@ import pl.com.softproject.diabetyk.web.dao.ProductCategoryDAO;
 import pl.com.softproject.diabetyk.web.dao.ProductDAO;
 import pl.com.softproject.diabetyk.web.model.Product;
 import pl.com.softproject.diabetyk.web.model.ProductCategory;
+import pl.com.softproject.diabetyk.web.model.UserData;
 import pl.com.softproject.diabetyk.web.services.ProductService;
+import pl.com.softproject.diabetyk.web.services.UserService;
 
 /**
  *
@@ -41,10 +43,7 @@ public class ProductController {
     private ProductService productService;
     
     @Autowired
-    private ProductCategoryDAO productCategoryDAO;
-
-    @Autowired
-    private ProductDAO productDAO;
+    private UserService userService;
 
     private Map<String, ProductCategory> productCategoryCache = new HashMap<String, ProductCategory>();
     
@@ -52,7 +51,7 @@ public class ProductController {
     private void initCache() {
         logger.debug("initializing cache");
         
-        Iterable<ProductCategory> tmp = productCategoryDAO.findAll();
+        Iterable<ProductCategory> tmp = productService.findAllCategories();
         for(ProductCategory cat : tmp) {
             productCategoryCache.put(String.valueOf(cat.getId()), cat);
         }
@@ -87,6 +86,8 @@ public class ProductController {
             addProductCategoryToModel(model);
         } else {
             model.setViewName("redirect:../list");
+            UserData currentUser = userService.loadCurrentUserData();
+            product.setAuthor(currentUser);
             productService.saveProduct(product);
         }
 
@@ -95,7 +96,7 @@ public class ProductController {
     }
 
     private void addProductCategoryToModel(ModelAndView model) {
-        Iterable<ProductCategory> categories = productCategoryDAO.findAllOrdered();
+        Iterable<ProductCategory> categories = productService.findAllCategoriesOrdered();
         model.addObject("categories", categories);
     }
 

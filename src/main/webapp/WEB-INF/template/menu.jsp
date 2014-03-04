@@ -32,7 +32,7 @@
         <ul class="nav navbar-nav">
 <!--            <li class="active"><a href="home.htm">Home</a></li>-->
             <li <c:if test="${menu == 'list.htm'}">class="active"</c:if>><a href="list">Produkty</a></li>
-            <sec:authorize ifAnyGranted="ROLE_MODERATOR,ROLE_ADMIN">
+            <sec:authorize ifAnyGranted="ROLE_USER">
                 <li <c:if test="${menu == 'product/add.htm'}">class="active"</c:if>><a href="product/add">Dodaj produkt</a></li>
             </sec:authorize>
             <li><a href="#about">O projekcie</a></li>

@@ -45,6 +45,16 @@ public class ProductServiceImpl implements ProductService {
             }
          productDAO.save(product);   
     }
+    
+    @Override
+    public Iterable<ProductCategory> findAllCategoriesOrdered() {
+        return productCategoryDAO.findAllOrdered();
+    }
+    
+    @Override
+    public Iterable<ProductCategory> findAllCategories() {
+        return productCategoryDAO.findAll();
+    }
 
     public void setProductCategoryDAO(ProductCategoryDAO productCategoryDAO) {
         this.productCategoryDAO = productCategoryDAO;

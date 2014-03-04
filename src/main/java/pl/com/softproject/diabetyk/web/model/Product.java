@@ -14,7 +14,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Size;
 
@@ -46,6 +48,11 @@ public class Product {
     private String homeMeasure;
     @DecimalMin("0")
     private Integer wwInPortion;
+    @ManyToOne
+    @JoinColumn(name = "author")
+    private UserData author;
+    @Column
+    private boolean moderated;
     
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
     private Set<ProductCategory> categories = new HashSet<ProductCategory>(0);
@@ -130,6 +137,14 @@ public class Product {
         this.wwInPortion = wwInPortion;
     }
 
+    public UserData getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(UserData author) {
+        this.author = author;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;
