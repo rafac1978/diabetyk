@@ -8,6 +8,8 @@ package pl.com.softproject.diabetyk.web.services;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -20,7 +22,7 @@ import pl.com.softproject.diabetyk.web.model.ProductCategory;
  *
  * @author Adrian Lapierre
  */
-@ContextConfiguration("/diabetyk-web-core.xml")
+@ContextConfiguration("/test-context.xml")
 @TransactionConfiguration(defaultRollback = false)
 public class ProductServiceImplTest extends AbstractTransactionalJUnit4SpringContextTests {
     
@@ -53,31 +55,21 @@ public class ProductServiceImplTest extends AbstractTransactionalJUnit4SpringCon
      * Test of saveProduct method, of class ProductServiceImpl.
      */
     @Test
-    public void testSaveProduct() {
-        System.out.println("saveProduct");
+    public void testCategory() {
+        System.out.println("testCategory");
         
-        Product pr = new Product();
-        pr.setName("test");
-        pr.setDescription("lalalal");
+        Iterable<ProductCategory> res = productService.findAllCategories();
         
-        productDAO.save(pr);
-        //productCategoryDAO.save(cat);
-        
-        ProductCategory cat = productCategoryDAO.findOne(1L);
-        pr.getCategories().add(cat);
-        cat.getProducts().add(pr);
-        //cat.setName("amiana");
+        System.out.println(res);
         
     }
     
     @Test
     public void test() {
+        Page<Product> res = productDAO.findForUser("admin", new PageRequest(1, 10));
         
-        Product prod = productDAO.findOne(1L);
+        System.out.println(res.getContent());
         
-        prod.setName("zmiana nazwy");
-        
-        productDAO.save(prod);
         
     }
 

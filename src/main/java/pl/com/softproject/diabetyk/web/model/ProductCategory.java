@@ -31,7 +31,7 @@ public class ProductCategory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @Column(length = 256)
+    @Column(length = 256, name = "category_name")
     @Size(min = 3, max = 256)
     private String name;
     

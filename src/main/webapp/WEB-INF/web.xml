@@ -30,6 +30,7 @@
         <param-value>
             /WEB-INF/diabetyk-web-servlet.xml,
             classpath:diabetyk-web-core.xml,
+            classpath:datasource.xml,
             classpath:diabetyk-web-security.xml          
         </param-value>
     </context-param>

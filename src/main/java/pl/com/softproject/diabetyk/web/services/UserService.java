@@ -23,5 +23,7 @@ public interface UserService {
     void passwordReset(String username);
 
     void registerUser(String username, String password, String email);
+
+    boolean isAuthenticated();
     
 }

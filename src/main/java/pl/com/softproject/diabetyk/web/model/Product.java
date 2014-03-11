@@ -54,6 +54,9 @@ public class Product {
     @Column
     private boolean moderated;
     
+    @Column(name = "product_normalized_name", unique = true)
+    private String productNormalizedName;
+    
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
     private Set<ProductCategory> categories = new HashSet<ProductCategory>(0);
 
@@ -81,27 +84,27 @@ public class Product {
         this.description = description;
     }
 
-    public Double getFat() {
+    public double getFat() {
         return fat;
     }
 
-    public void setFat(Double fat) {
+    public void setFat(double fat) {
         this.fat = fat;
     }
 
-    public Double getProtein() {
+    public double getProtein() {
         return protein;
     }
 
-    public void setProtein(Double protein) {
+    public void setProtein(double protein) {
         this.protein = protein;
     }
 
-    public Double getCarbohydrates() {
+    public double getCarbohydrates() {
         return carbohydrates;
     }
 
-    public void setCarbohydrates(Double carbohydrates) {
+    public void setCarbohydrates(double carbohydrates) {
         this.carbohydrates = carbohydrates;
     }
 
@@ -121,14 +124,6 @@ public class Product {
         this.homeMeasure = homeMeasure;
     }
 
-    public Set<ProductCategory> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(Set<ProductCategory> categories) {
-        this.categories = categories;
-    }
-
     public Integer getWwInPortion() {
         return wwInPortion;
     }
@@ -144,6 +139,32 @@ public class Product {
     public void setAuthor(UserData author) {
         this.author = author;
     }
+
+    public boolean isModerated() {
+        return moderated;
+    }
+
+    public void setModerated(boolean moderated) {
+        this.moderated = moderated;
+    }
+
+    public String getProductNormalizedName() {
+        return productNormalizedName;
+    }
+
+    public void setProductNormalizedName(String productNormalizedName) {
+        this.productNormalizedName = productNormalizedName;
+    }
+
+    public Set<ProductCategory> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<ProductCategory> categories) {
+        this.categories = categories;
+    }
+
+    
     
     @Override
     public int hashCode() {

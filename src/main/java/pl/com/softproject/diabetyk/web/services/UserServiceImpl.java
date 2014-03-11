@@ -66,6 +66,12 @@ public class UserServiceImpl implements UserService {
         
     }
     
+    @Override
+    public boolean isAuthenticated() {
+        return SecurityContextHolder.getContext().getAuthentication() != null 
+                && SecurityContextHolder.getContext().getAuthentication().isAuthenticated();
+    }
+    
     @Secured("ROLE_USER")
     public void changePassword(String oldPassword, String newPassword) {
         userDetailsManager.changePassword(oldPassword, newPassword);

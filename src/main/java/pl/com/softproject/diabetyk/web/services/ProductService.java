@@ -6,6 +6,8 @@
 
 package pl.com.softproject.diabetyk.web.services;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import pl.com.softproject.diabetyk.web.model.Product;
 import pl.com.softproject.diabetyk.web.model.ProductCategory;
@@ -22,5 +24,9 @@ public interface ProductService {
     Iterable<ProductCategory> findAllCategories();
 
     Iterable<ProductCategory> findAllCategoriesOrdered();
+
+    Page<Product> findProductsForModeration(String author, Pageable pr);
+
+    Page<Product> findForUser(String author, Pageable pr);
     
 }
