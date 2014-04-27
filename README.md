@@ -1,4 +1,14 @@
-diabetyk
-========
+# Diabetyk
 
-portal dla Diabetyków - Spring MVC, JPA, SpringData, SpringSecurity
+Portal dla Diabetyków.
+
+# Technologie
+
+- Spring MVC
+- JPA
+- SpringData
+- SpringSecurity
+
+# Baza danych:
+
+- PostgreSQL (9.2+)

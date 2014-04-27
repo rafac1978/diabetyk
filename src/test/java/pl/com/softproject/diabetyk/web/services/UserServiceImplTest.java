@@ -7,7 +7,9 @@
 package pl.com.softproject.diabetyk.web.services;
 
 import org.junit.Test;
+
 import static org.junit.Assert.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.test.context.ContextConfiguration;
@@ -15,24 +17,24 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import pl.com.softproject.diabetyk.web.model.UserData;
 
 /**
- *
  * @author Adrian Lapierre
  */
 @ContextConfiguration({"/diabetyk-web-core.xml"})
 public class UserServiceImplTest extends AbstractTransactionalJUnit4SpringContextTests {
-    
+
 //    @Autowired
 //    UserService userService;
 //    
+
     /**
      * Test of registerUser method, of class UserServiceImpl.
      */
     @Test
     public void testRegisterUser() {
         System.out.println("registerUser");
-        
+
         //userService.registerUser("adrian", "alamakota", "adrian@soft-project.pl");
-        
+
     }
 
     /**
@@ -128,5 +130,4 @@ public class UserServiceImplTest extends AbstractTransactionalJUnit4SpringContex
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
 }

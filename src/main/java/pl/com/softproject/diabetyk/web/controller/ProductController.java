@@ -1,7 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This file is part of diabetyk-web.
+ *
+ * (c) 2014 SoftProject
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 package pl.com.softproject.diabetyk.web.controller;
 
@@ -10,6 +13,7 @@ import java.util.Map;
 import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomCollectionEditor;
@@ -30,33 +34,32 @@ import pl.com.softproject.diabetyk.web.services.ProductService;
 import pl.com.softproject.diabetyk.web.services.UserService;
 
 /**
- *
- * @author Adrian Lapierre
+ * @author Adrian Lapierre <adrian@softproject.com.pl>
  */
 @Controller
 @RequestMapping("/product")
 public class ProductController {
 
     private Logger logger = Logger.getLogger(getClass());
-    
+
     @Autowired
     private ProductService productService;
-    
+
     @Autowired
     private UserService userService;
 
     private Map<String, ProductCategory> productCategoryCache = new HashMap<String, ProductCategory>();
-    
+
     @PostConstruct
     private void initCache() {
         logger.debug("initializing cache");
-        
+
         Iterable<ProductCategory> tmp = productService.findAllCategories();
-        for(ProductCategory cat : tmp) {
+        for (ProductCategory cat : tmp) {
             productCategoryCache.put(String.valueOf(cat.getId()), cat);
         }
     }
-    
+
     @RequestMapping("/test")
     public String test() {
 
@@ -78,7 +81,7 @@ public class ProductController {
     public ModelAndView saveProduct(@Valid Product product, BindingResult bindingResult) {
 
         System.out.println("cat: " + product.getCategories());
-        
+
         ModelAndView model = new ModelAndView();
 
         if (bindingResult.hasErrors()) {
@@ -110,12 +113,12 @@ public class ProductController {
                     return element;
                 }
                 if (element instanceof String) {
-                    ProductCategory staff = productCategoryCache.get((String)element);
+                    ProductCategory staff = productCategoryCache.get((String) element);
                     logger.debug("Looking up staff for id " + element + ": " + staff);
                     return staff;
                 }
                 if (element instanceof Long) {
-                    ProductCategory staff = productCategoryCache.get(((Long)element).toString());
+                    ProductCategory staff = productCategoryCache.get(((Long) element).toString());
                     logger.debug("Looking up staff for long id " + element + ": " + staff);
                     return staff;
                 }
@@ -124,5 +127,4 @@ public class ProductController {
             }
         });
     }
-
 }
