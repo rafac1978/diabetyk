@@ -33,7 +33,7 @@
         <property name="packagesToScan" value="pl.com.softproject.diabetyk.web.model" />
 <!--        <property name="jpaProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.DerbyTenSevenDialect</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
             </props>
             
         </property>-->

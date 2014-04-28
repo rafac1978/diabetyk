@@ -19,8 +19,7 @@ import javax.validation.constraints.Size;
 public class ProductCategory {
 
     @Id
-    @SequenceGenerator(name = "product_category_id_seq", sequenceName = "product_category_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_category_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 256, name = "category_name")
