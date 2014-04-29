@@ -1,9 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This file is part of diabetyk-web.
+ *
+ * (c) 2014 SoftProject
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
-
 package pl.com.softproject.diabetyk.web.model;
 
 import java.util.Date;
@@ -13,22 +15,22 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
- *
- * @author Adrian Lapierre
+ * @author Adrian Lapierre <adrian@softproject.com.pl>
  */
 @Entity
 @Cacheable(true)
 public class UserData {
-    
+
     @Column(length = 50)
     @NotEmpty
     @Id
     private String login;
-    
+
     @Column(length = 256)
     @Email
     @NotEmpty
@@ -36,10 +38,10 @@ public class UserData {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastLoggedIn;
-    
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
-    
+
     public UserData() {
     }
 
@@ -84,5 +86,4 @@ public class UserData {
     public String toString() {
         return "UserData{" + "login=" + login + ", email=" + email + ", lastLoggedIn=" + lastLoggedIn + ", created=" + created + '}';
     }
-    
 }

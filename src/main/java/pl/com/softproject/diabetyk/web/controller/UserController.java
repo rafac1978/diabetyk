@@ -1,12 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This file is part of diabetyk-web.
+ *
+ * (c) 2014 SoftProject
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
-
 package pl.com.softproject.diabetyk.web.controller;
 
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,39 +22,33 @@ import pl.com.softproject.diabetyk.web.model.UserData;
 import pl.com.softproject.diabetyk.web.services.UserService;
 
 /**
- *
- * @author Adrian Lapierre
+ * @author Adrian Lapierre <adrian@softproject.com.pl>
  */
 @Controller
 public class UserController {
- 
+
     @Autowired
     private UserService userService;
-    
+
     @RequestMapping("/register")
     public String showRegistrationForm(Model model) {
-        
         model.addAttribute("user", new UserDTO());
-        
+
         return "register";
     }
-    
+
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView registerNewUser(@Valid UserDTO user, BindingResult bindingResult) {
         ModelAndView model = new ModelAndView();
-        
-        if(bindingResult.hasErrors()) {
-            
-            System.out.println(bindingResult);
-            
+
+        if (bindingResult.hasErrors()) {
             model.setViewName("register");
-            return model;
-        } else {        
-            userService.registerUser(user.getUserName(), user.getPassword(), user.getEmail());
-            model.setViewName("redirect:/home");
+
             return model;
         }
-        
+        userService.registerUser(user.getUserName(), user.getPassword(), user.getEmail());
+        model.setViewName("redirect:/home");
+
+        return model;
     }
-    
 }

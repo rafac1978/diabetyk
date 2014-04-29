@@ -11,16 +11,15 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 /**
- *
  * @author Adrian Lapierre
  */
 @ContextConfiguration("/diabetyk-web-core.xml")
 public class ContextTest extends AbstractJUnit4SpringContextTests {
-    
+
     @Test
     public void testContext() {
         System.out.println("test");
     }
-    
-    
+
+
 }

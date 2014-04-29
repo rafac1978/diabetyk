@@ -8,37 +8,28 @@ package pl.com.softproject.diabetyk.web.model;
 
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 /**
- *
- * @author Adrian Lapierre
+ * @author Adrian Lapierre <adrian@softproject.com.pl>
+ * @author Marcin Jasinsi <mkjasinski@gmail.com>
  */
 @Entity
 public class ProductCategory {
-    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(length = 256, name = "category_name")
     @Size(min = 3, max = 256)
     private String name;
-    
-    @ManyToOne(cascade={CascadeType.ALL})
-    @JoinColumn(name="category_id")
+
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "category_id")
     private ProductCategory parent;
-    
+
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Product> products = new HashSet<Product>(0);
 
@@ -100,7 +91,4 @@ public class ProductCategory {
         }
         return true;
     }
-    
-    
-    
 }

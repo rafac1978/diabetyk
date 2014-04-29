@@ -1,62 +1,69 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This file is part of MyOwnTests.
+ *
+ * (c) 2013 Marcin Jasinski
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
-
 package pl.com.softproject.diabetyk.web.model;
 
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Size;
 
 /**
- *
- * @author Adrian Lapierre
+ * @author Adrian Lapierre <adrian@softproject.com.pl>
+ * @author Marcin Jasinski <mkjasinski@gmail.com>
  */
 @Entity
 public class Product {
-    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(length = 256)
     @Size(min = 3, max = 256)
     private String name;
+
     @Column(length = 256)
     @Size(min = 2, max = 256)
     private String description;
+
     @DecimalMin("0")
+    @Column(columnDefinition = "DOUBLE PRECISION")
     private double fat;
+
     @DecimalMin("0")
+    @Column(columnDefinition = "DOUBLE PRECISION")
     private double protein;
+
     @DecimalMin("0")
+    @Column(columnDefinition = "DOUBLE PRECISION")
     private double carbohydrates;
+
+    @Column(columnDefinition = "DOUBLE PRECISION")
     private Double weightForOneWw;
+
     @Column(length = 256)
     private String homeMeasure;
+
     @DecimalMin("0")
     private Integer wwInPortion;
+
     @ManyToOne
     @JoinColumn(name = "author")
     private UserData author;
+
     @Column
     private boolean moderated;
-    
+
     @Column(name = "product_normalized_name", unique = true)
     private String productNormalizedName;
-    
+
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
     private Set<ProductCategory> categories = new HashSet<ProductCategory>(0);
 
@@ -164,8 +171,6 @@ public class Product {
         this.categories = categories;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -188,11 +193,8 @@ public class Product {
         return true;
     }
 
-    
-    
     @Override
     public String toString() {
         return "Product{" + "id=" + id + ", name=" + name + ", description=" + description + ", fat=" + fat + ", protein=" + protein + ", carbohydrates=" + carbohydrates + ", weightForOneWw=" + weightForOneWw + ", homeMeasure=" + homeMeasure + '}';
     }
-    
 }

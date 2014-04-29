@@ -25,41 +25,32 @@
         ">
 
     <!-- Placeholder config -->
-    <context:property-placeholder location="classpath:system.properties" />
+    <context:property-placeholder location="classpath:system.properties"/>
     <context:component-scan base-package="pl.com.softproject.diabetyk.web.services"/>
-    
+
     <jpa:repositories base-package="pl.com.softproject.diabetyk.web.dao"/>
-    	
-	<!-- aktywacja springowego cache
-	<cache:annotation-driven />
-	 -->
-     
-	 <!--ehcache:annotation-driven/-->
+
+    <!-- aktywacja springowego cache
+    <cache:annotation-driven />
+     -->
+
+    <!--ehcache:annotation-driven/-->
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="pl.com.softproject.diabetyk.web.model" />
-        <property name="jpaProperties">
-            <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.DerbyTenSevenDialect</prop>
-            </props>
-            
-        </property>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="pl.com.softproject.diabetyk.web.model"/>
 
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="database" value="DERBY" />
-                <property name="generateDdl" value="true" />
+                <property name="database" value="POSTGRESQL"/>
+                <property name="generateDdl" value="true"/>
                 <property name="showSql" value="true"/>
             </bean>
         </property>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory" />
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
-   
-    
-    
-    
+
 </beans>
